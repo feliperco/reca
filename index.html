@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reca Engenharia</title>
+    <style>
+        /* Reset de estilo */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Cabeçalho */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: flex-end;
+            padding: 10px 20px;
+        }
+
+        header img {
+            width: 120px;
+            margin-right: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex: 1;
+    padding-bottom: 10px; /* Espaço abaixo do menu */
+
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #215967;
+            font-weight: normal;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #215967;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('gourmet-capa.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: white; /* Cor dos títulos */
+            font-size: 3em;
+            font-weight: 300;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+
+	h2, h3 {
+            color: #215967; /* Cor dos títulos */
+            font-weight: 300; /* Deixa a fonte fina */
+            font-family: 'Roboto', sans-serif; /* Define a fonte (opcional) */
+            line-height: 1.4; /* Espaçamento entre linhas */
+          margin-bottom: 20px; /* Espaçamento inferior */
+          text-align: center; /* Centraliza os títulos (se for necessário) */
+}
+
+
+        /* Seções */
+        section {
+            padding: 50px 10%;
+            text-align: center;
+        }
+     
+        #sobre-nos p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        #servicos {
+            padding-top: 170px; /* Ajuste conforme a altura do cabeçalho */
+            margin-top: -170px;
+        }
+
+.services {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .service-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 30%;
+            min-width: 250px;
+        }
+
+        .service-card h3 {
+            margin: 10px 0;
+            color: #215967;
+            font-weight: 300; /* Letra fina */
+        }
+
+        .service-card a {
+            text-decoration: none;
+            color: #215967;
+            font-weight: normal;
+            transition: color 0.3s ease;
+        }
+
+        .service-card a:hover {
+            color: #003d66;
+        }
+
+        #projetos {
+            padding-top: 170px; /* Espaço extra para compensar o cabeçalho fixo */
+            margin-top: -170px; /* Corrige o deslocamento visual causado pelo padding */
+        }
+
+#projetos h2 {
+    color: #215967;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.portfolio-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+        #projetos .portfolio {
+            display: flex;
+            gap: 20px;
+   	    overflow-x: auto;
+   	    scroll-behavior: smooth;
+	}
+
+        #projetos .portfolio img {
+	    flex-shrink: 0;
+ 	    width: 400px; /* Tamanho ampliado das imagens */
+	    height: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        #projetos .portfolio img:hover {
+            transform: scale(1.05);
+        }
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(33, 89, 103, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.arrow:hover {
+    background-color: #173d4a;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .portfolio img {
+        width: 300px;
+        height: 200px;
+    }
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio img {
+        width: 250px;
+        height: 150px;
+    }
+
+    .arrow {
+        display: none; /* Esconde as setas em telas muito pequenas */
+    }
+}
+
+
+        .destaque {
+            color: white; /* Altera a cor da palavra para branco */
+            background-color: #215967; /* Destaque com fundo azul */
+            padding: 2px 5px; /* Espaçamento interno para melhorar a visibilidade */
+            border-radius: 4px; /* Bordas arredondadas (opcional) */
+            font-weight: bold; /* Deixa a palavra em negrito (opcional) */
+}
+
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed; /* Fixa o botão na tela */
+            bottom: 20px; /* Distância da parte inferior da tela */
+            right: 20px; /* Distância do lado direito */
+            background-color: #128c7e; /* Cor de fundo */
+            color: white; /* Cor do texto */
+            border-radius: 50%; /* Deixa o botão redondo */
+            width: 70px; /* Largura do botão */
+            height: 70px; /* Altura do botão */
+            display: flex; /* Centraliza o conteúdo */
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+            cursor: pointer; /* Mostra o cursor ao passar o mouse */
+            transition: all 0.3s ease; /* Suaviza as alterações */
+        }
+
+        .whatsapp-button img {
+            width: 30px; /* Largura do ícone */
+            height: 30px; /* Altura do ícone */
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            
+            .service-card {
+                width: 100%;
+            }
+
+            section {
+                padding: 20px 5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header img {
+                width: 80px; /* Ajustei o tamanho da logo em telas menores */
+            }
+
+            header p {
+                font-size: 1em;
+            
+        }
+
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        h1 {
+            color: #215967;
+            text-align: center;
+        }
+
+        /* Formulário */
+        .form-container {
+            flex: 1 1 50%;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            font-weight: bold;
+            color: #333333;
+            text-align: left; /* Alinha os subtítulos à esquerda */
+            display: block;   /* Garante que o label ocupe uma linha inteira */
+        }
+
+        .form-container input,
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #215967;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .form-container button:hover {
+            background-color: #173d4a;
+        }
+
+        /* Informações de contato */
+        .info-container {
+            flex: 1 1 40%;
+            padding: 40px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-container h3 {
+            color: #215967;
+            margin-bottom: 10px;
+        }
+
+        .info-container p {
+            margin-bottom: 20px;
+            color: #555555;
+        }
+
+        .info-container a {
+            color: #215967;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .info-container a:hover {
+            text-decoration: underline;
+        }
+
+        /* Botões flutuantes */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .floating-buttons a {
+            display: flex; /* Centraliza o conteúdo */
+            align-items: center; /* Alinha o conteúdo verticalmente */
+            justify-content: center; /* Centraliza o conteúdo horizontalmente */
+            padding: 10px 15px; /* Espaçamento interno maior (alonga o botão horizontalmente) */
+            background-color: #128c7e; /* Cor de fundo verde */
+            color: #ffffff; /* Texto branco */
+            font-size: 0.9em; /* Fonte menor */
+            font-weight: normal; /* Texto em negrito(bold) ou normal */
+            border-radius: 25px; /* Bordas arredondadas, mas menos circular */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+            text-decoration: none; /* Remove sublinhado */
+            transition: background-color 0.3s ease; /* Efeito ao passar o mouse */
+            width: auto; /* Ajusta a largura dinamicamente ao conteúdo */
+            height: auto;
+    }
+
+        .instagram-button {
+            padding: 10px; /* Espaçamento interno ao redor do ícone */
+            background-color: #e4405f; /* Fundo para destacar */
+            border-radius: 50%; /* Deixa o botão redondo */
+            display: inline-flex; /* Garante alinhamento e flexibilidade */
+            align-items: center; /* Centraliza verticalmente o conteúdo */
+            justify-content: center; /* Centraliza horizontalmente */
+        }
+        
+         .instagram-button img {
+            width: 20px;
+            height: 20px;
+        }
+
+
+        .floating-buttons a img {
+            margin-right: 6px; /* Espaço entre o ícone e o texto */
+            width: 20px; /* Ajusta o tamanho do ícone */
+            height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    
+
+        /* Rodapé */
+        footer {
+            background-color: #215967;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            #contato .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Logo_Reca_escrito-preto_e_azul.png" alt="Logo Reca Engenharia">
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#sobre-nos">Sobre</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Transformamos espaços com estilo e qualidade</h1>
+        </div>
+    </section>
+
+    <section id="sobre-nos">
+        <h2>Sobre Nós</h2>
+        <p>Somos especialistas em reformas <span class="destaque">rápidas</span>, <span class="destaque">sem dor de cabeça</span> e com a <span class="destaque">qualidade</span> que nossos clientes merecem!!<p>
+        <p>A Reca Engenharia é uma empresa situada em <span class="destaque">Belo Horizonte</span>, atuante no ramo de reformas residenciais, comerciais e coorporativas.
+        Nosso <span class="destaque">comprometimento</span> é entregar espaços renovados e experiências transformadoras.<p>
+        <p>Com uma equipe <span class="destaque">experiente</span> e dedicada, aliada ao nosso modelo de gestão e acompanhamento de obras, proporcionamos ambientes funcionais e sofisticados, unindo <span class="destaque">agilidade</span> e qualidade.</p>
+
+        <p>Obra com qualidade, no prazo e sem dor de cabeça, é com a <span class="destaque">Reca Engenharia!</span></p>
+    </section>
+
+<section id="servicos">
+        <h2>Serviços</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Reformas Residenciais</h3>
+                <p>Transformamos ambientes com qualidade e comprometimento.</p>
+            </div>
+            <div class="service-card">
+                <h3>Reformas Comerciais</h3>
+                <p>Obras na modalidade Fast Track, pois entendemos o impacto do tempo no seu negócio.</p>
+            </div>
+            <div class="service-card">
+                <h3>Consultoria Técnica</h3>
+                <p>Seja residencial ou comercial, temos expertise para Coordenação Técnica e Gerencial do seu empreendimento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos">
+        <h2>Projetos</h2>
+        <div class="portfolio-wrapper">
+        <button class="arrow left" onclick="scrollPortfolio('left')"><</button>
+        <div class="portfolio">
+            <img src="projeto-gourmet.jpg" alt="Projeto 1">
+            <img src="jacuzzi-noite.jpg" alt="Projeto 2">
+            <img src="sala-602.jpg" alt="Projeto 3">
+	    <img src="jacuzzi-dia.jpg" alt="Projeto 4">
+            <img src="banho-suite-602.jpg" alt="Projeto 5">
+            <img src="comercial-6.jpg" alt="Projeto 6">
+	    <img src="cozinha-602.jpg" alt="Projeto 7">
+            <img src="cozinha-602b.jpg" alt="Projeto 8">
+	    <img src="comercial-4.jpg" alt="Projeto 9">
+	    <img src="sala-602b.jpg" alt="Projeto 10">
+            <img src="social-602.jpg" alt="Projeto 11">
+	    <img src="comercial-9.jpg" alt="Projeto 12">
+            <img src="comercial-13.jpg" alt="Projeto 13">
+	    <img src="comercial-14.jpg" alt="Projeto 14">
+            <img src="comercial-11.jpg" alt="Projeto 15">
+            <img src="comercial-12.jpg" alt="Projeto 16">
+        </div>
+<button class="arrow left" onclick="scrollPortfolio('left')"><</button>
+<button class="arrow right" onclick="scrollPortfolio('right')">></button>
+
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+    <div class="container">
+        <!-- Formulário -->
+        <div class="form-container">
+            <form 
+action="https://formspree.io/f/xlddwdke" method="POST">
+                <label for="name">Nome: *</label>
+                <input type="text" id="name" name="name" placeholder="Digite o seu nome..." required>
+
+                <label for="email">E-mail: *</label>
+                <input type="email" id="email" name="email" placeholder="Informe um e-mail para contato..." required>
+
+                <label for="phone">Telefone: *</label>
+                <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required>
+
+                <label for="subject">Assunto: *</label>
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="orcamento">Orçamento</option>
+                    <option value="fornecedores">Fornecedores</option>
+                    <option value="duvidas">Dúvidas Gerais</option>
+                </select>
+
+                <label for="message">Mensagem: *</label>
+                <textarea id="message" name="message" placeholder="Digite a sua mensagem ou a sua dúvida..." rows="5" required></textarea>
+
+                <button type="submit">ENVIAR</button>
+
+         <!-- Campo Anti-Spam (honeypot) -->
+		<input type="text" name="_honeypot" style="display:none">
+
+	 <!-- Campo oculto para redirecionamento -->
+    		<input type="hidden" name="_next" value="/mensagem-enviada.html">
+
+            </form>
+        </div>
+
+        <!-- Informações de Contato -->
+        <div class="info-container">
+            <h3>Fale conosco</h3>
+            <p>Email | <a href="mailto:contato[at]recaengenharia.com.br">contato@recaengenharia.com.br</a></p>
+         <br>
+
+            <h3>Endereço</h3>
+            <p>Rua Rio Grande do Norte, 1560.<br>Savassi - Belo Horizonte, MG</p>
+         <br>
+
+            <h3><u>Gostaria de ser nosso fornecedor?</u></h3>
+            <p>Envie portfólio para: <a href="mailto:fornecedores[at]recaengenharia.com.br">fornecedores@recaengenharia.com.br</a></p>
+         <br>
+
+     <p>
+       <h3>Visite nossas redes sociais</h3>
+       
+           <div class="social-buttons">
+           <!-- Botão do Instagram -->
+    <a href="https://www.instagram.com/reca.engenharia" class="social-button instagram" target="_blank">
+        <img src="icons8-instagram-original vs fundo-transp.png" alt="Instagram"> 
+    </a>
+
+    <!-- Botão do LinkedIn -->
+    <a href="https://www.linkedin.com/company/102559554" class="social-button linkedin" target="_blank">
+        <img src="icons8-linkedin-original vs fundo-transp.png" alt="LinkedIn"> 
+    </a>
+
+    </p>
+
+        </div>
+     </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Reca Engenharia. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão Flutuante do WhatsApp -->
+        <div class="floating-buttons">
+        <a href="https://wa.me/5531997686769" class="whatsapp-button" target="_blank">
+        <img src="icons8-whatsapp-branco vs fundo transp-24x24.png" alt="WhatsApp">
+          Contato via WhatsApp
+       </a>
+</div>
+
+<script>
+    function scrollPortfolio(direction) {
+        const portfolio = document.querySelector('.portfolio');
+        const scrollAmount = 400; // Ajuste conforme o tamanho das imagens
+        if (direction === 'left') {
+            portfolio.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            portfolio.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
+</script>
+
+
+
+</body>
+</html>
+
+   
