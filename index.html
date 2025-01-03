@@ -664,13 +664,13 @@ action="https://formspree.io/f/xlddwdke" method="POST">
 
 <script>
     function scrollPortfolio(direction) {
-    const portfolio = document.querySelector('.portfolio');
-    const scrollAmount = portfolio.clientWidth; // Ajuste conforme o tamanho das imagens
-    if (direction === 'left') {
-        portfolio.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    } else {
-        portfolio.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+        const portfolio = document.querySelector('.portfolio');
+        const scrollAmount = 400; // Ajuste conforme o tamanho das imagens
+        if (direction === 'left') {
+            portfolio.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            portfolio.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
 }
 
     function toggleMenu() {
@@ -682,7 +682,15 @@ action="https://formspree.io/f/xlddwdke" method="POST">
         menu.style.display = toggle.classList.contains('open') ? 'flex' : 'none';
     }
 }
-
+// Fecha o menu ao clicar fora
+document.addEventListener('click', (event) => {
+    const menu = document.querySelector('nav');
+    const toggle = document.querySelector('.menu-toggle');
+    if (toggle.classList.contains('open') && !menu.contains(event.target) && !toggle.contains(event.target)) {
+        toggle.classList.remove('open');
+        menu.style.display = 'none';
+    }
+});
 
 </script>
 
