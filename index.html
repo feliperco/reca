@@ -36,7 +36,7 @@
             justify-content: center;
             gap: 40px;
             flex: 1;
-    padding-bottom: 10px; /* Espaço abaixo do menu */
+   	    padding-bottom: 10px; /* Espaço abaixo do menu */
 
         }
 
@@ -50,6 +50,42 @@
 
         nav a:hover {
             color: #215967;
+        }
+
+ /* Botão "Menu" */
+        .menu-toggle {
+            display: none; /* Esconde o botão no desktop */
+        }
+
+        /* Regras para mobile */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block; /* Exibe o botão no mobile */
+                background-color: #215967;
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-left: auto; /* Alinha no final do cabeçalho */
+            }
+
+            nav {
+                display: none; /* Esconde o menu no mobile por padrão */
+            }
+
+            .menu-toggle.open + nav {
+                display: flex; /* Mostra o menu ao clicar no botão */
+                flex-direction: column;
+                gap: 20px;
+                background-color: white;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                z-index: 1000;
+                padding: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
         }
 
         /* Hero Section */
@@ -221,6 +257,24 @@
     }
 }
 
+@media (max-width: 768px) {
+    .arrow {
+        display: block; /* Mostra as setas */
+        width: 30px;
+        height: 30px;
+    }
+
+    .portfolio-wrapper {
+        overflow-x: auto;
+        scroll-behavior: smooth;
+    }
+
+    .portfolio img {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
+}
 
         .destaque {
             color: white; /* Altera a cor da palavra para branco */
@@ -443,20 +497,24 @@
             #contato .contact-container {
                 flex-direction: column;
             }
-        }
+
+}
+
+
     </style>
 </head>
 <body>
     <header>
-        <img src="Logo_Reca_escrito-preto_e_azul.png" alt="Logo Reca Engenharia">
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#sobre-nos">Sobre</a>
-            <a href="#servicos">Serviços</a>
-            <a href="#projetos">Projetos</a>
-            <a href="#contato">Contato</a>
-        </nav>
-    </header>
+    <img src="Logo_Reca_escrito-preto_e_azul.png" alt="Logo Reca Engenharia">
+    <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#sobre-nos">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+    </nav>
+</header>
 
     <section id="home" class="hero">
         <div class="hero-text">
@@ -606,17 +664,27 @@ action="https://formspree.io/f/xlddwdke" method="POST">
 
 <script>
     function scrollPortfolio(direction) {
-        const portfolio = document.querySelector('.portfolio');
-        const scrollAmount = 400; // Ajuste conforme o tamanho das imagens
-        if (direction === 'left') {
-            portfolio.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        } else {
-            portfolio.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
+    const portfolio = document.querySelector('.portfolio');
+    const scrollAmount = portfolio.clientWidth; // Ajuste conforme o tamanho das imagens
+    if (direction === 'left') {
+        portfolio.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+        portfolio.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
+}
+
+    function toggleMenu() {
+    const menu = document.querySelector('nav');
+    const toggle = document.querySelector('.menu-toggle');
+
+    if (window.innerWidth <= 768) { // Apenas para telas menores
+        toggle.classList.toggle('open');
+        menu.style.display = toggle.classList.contains('open') ? 'flex' : 'none';
+    }
+}
+
+
 </script>
-
-
 
 </body>
 </html>
